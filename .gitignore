@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# Visual studio stuff
+*.sln
+*.vcxproj
+*.filters
+*.rc
+.*
+!/.gitignore
+!/.git
