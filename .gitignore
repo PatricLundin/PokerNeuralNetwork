@@ -39,3 +39,4 @@
 .*
 !/.gitignore
 !/.git
+Debug
