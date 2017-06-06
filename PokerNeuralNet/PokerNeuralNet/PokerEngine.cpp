@@ -1,4 +1,5 @@
 #include "PokerEngine.h"
+#include <random>
 
 
 PokerEngine::PokerEngine()
@@ -28,19 +29,29 @@ Hand PokerEngine::generateHandWithRemoval(vector<Hand> &cardRemoval)
 
 unsigned PokerEngine::getRandomCard() 
 {
-	return rand() % 52 + 1;
+	return getRandomNumber();
 }
 
 unsigned PokerEngine::getRandomCardWithRemoval(vector<unsigned> &cardRemoval)
 {
-	unsigned randomizedCard = rand() % 52 + 1;
+	unsigned randomizedCard = getRandomNumber();
 	for (unsigned i = 0; i < cardRemoval.size(); ++i) {
 		if (randomizedCard == cardRemoval[i]) {
-			getRandomCardWithRemoval(cardRemoval);
+			randomizedCard = getRandomCardWithRemoval(cardRemoval);
 		}
 	}
+	
 	cardRemoval.push_back(randomizedCard);
 	return randomizedCard;
+}
+
+unsigned PokerEngine::getRandomNumber()
+{
+	random_device rd;
+	mt19937 engine(rd()); 
+	uniform_int_distribution<int> dist(1,52);
+
+	return (unsigned)dist(engine);
 }
 
 PokerEngine::~PokerEngine()

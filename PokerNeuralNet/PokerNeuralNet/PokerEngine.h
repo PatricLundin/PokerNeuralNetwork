@@ -20,6 +20,7 @@ private:
 	Hand generateHandWithRemoval(vector<Hand> &cardRemoval);
 	unsigned getRandomCard();
 	unsigned getRandomCardWithRemoval(vector<unsigned> &cardRemoval);
+	unsigned getRandomNumber();
 };
 
 
